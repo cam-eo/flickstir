@@ -45,7 +45,12 @@ function Main() {
           />
         </div>
         <div className="main__functions">
-          <button className="main__buttonWatchedIt">Watched it?</button>
+          <div className="main__watchedIt">
+            <span>Watched it?</span>
+            <input type="checkbox" />
+          </div>
+
+          {/* <button className="main__buttonWatchedIt">Watched it?</button> */}
           <div className="main__buttonRow">
             <div className="main__functionButton">
               <NoIcon fontSize="large" className="main__noIcon" />

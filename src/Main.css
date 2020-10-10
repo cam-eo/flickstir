@@ -63,7 +63,7 @@ div:focus {
     width: 100%;
 }
 
-.main__functions > button{
+/* .main__functions > button{
     height: 50px;
     width: 60%;
     background-color: transparent;
@@ -72,6 +72,26 @@ div:focus {
     color: #446455;
     border: 1px solid #446455;
     outline: none;
+} */
+
+.main__watchedIt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.main__watchedIt > span{
+   
+    color: #446455;
+    margin-right: 10px;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.main__watchedIt > input{
+    height: 30px;
+    width: 30px;
 }
 
 .main__buttonRow{

@@ -11,8 +11,4 @@ const requests = {
   fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
 };
 
-// function fetchMovie(movieId) {
-//   return `/movie/${movieId}?api_key=${API_KEY}`;
-// }
-
 export default requests;
