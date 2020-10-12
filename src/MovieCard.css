@@ -1,0 +1,91 @@
+.movieCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 570px;
+    width: 400px;
+    border: 1px solid darkgray;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+.movieCard__container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.movieCard__front > img{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+.movieCard__front{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    
+}
+
+.movieCard__back {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+    transform: rotateY(180deg);
+}
+
+.movieCard__backFlip {
+    transform: rotateY(0deg);
+}
+
+
+
+
+
+/* .movieCards{
+    height: 100%;
+    width: 400px;
+    background-color: coral;
+    border: 1px solid darkgray;
+    border-radius: 20px;
+}
+
+.movieCards__cardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+.movieCards__cardControls{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.movieCards__button{
+    height: 50px;
+    width: 50px;
+    background-color: lightgrey;
+    border-radius: 25px;
+} */

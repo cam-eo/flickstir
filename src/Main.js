@@ -8,6 +8,8 @@ import PlayIcon from "@material-ui/icons/PlayArrow";
 import DescriptionIcon from "@material-ui/icons/Description";
 import FaceIcon from "@material-ui/icons/Face";
 import RatingsIcon from "@material-ui/icons/Grade";
+import MovieCard from "./MovieCard";
+import { Flip } from "@material-ui/icons";
 const API_KEY = "455e6aaca51f7fdd3d3560e3bdbe5cda";
 
 function Main() {
@@ -26,7 +28,34 @@ function Main() {
 
   return (
     <div className="main">
-      <div className="main__content">
+      <MovieCard
+        image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+      />
+      <div className="main__controls">
+        <div className="main__controlsButton">
+          <NoIcon className="main__controlsButtonIcon" />
+        </div>
+        <div className="main__controlsButton">
+          <DescriptionIcon className="main__controlsButtonIcon" />
+        </div>
+        <div className="main__controlsButton">
+          <PlayIcon className="main__controlsButtonIcon" />
+        </div>
+        <div className="main__controlsButton">
+          <RatingsIcon className="main__controlsButtonIcon" />
+        </div>
+        <div className="main__controlsButton">
+          <YesIcon className="main__controlsButtonIcon" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Main;
+
+/*
+<div className="main__content">
         <div className="main__movieInfo">
           <div className="main__movieInfoButtons">
             <div className="main__movieInfoButton" tabindex="1">
@@ -49,8 +78,6 @@ function Main() {
             <span>Watched it?</span>
             <input type="checkbox" />
           </div>
-
-          {/* <button className="main__buttonWatchedIt">Watched it?</button> */}
           <div className="main__buttonRow">
             <div className="main__functionButton">
               <NoIcon fontSize="large" className="main__noIcon" />
@@ -64,8 +91,4 @@ function Main() {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-export default Main;
+*/
