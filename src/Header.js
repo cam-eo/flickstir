@@ -1,4 +1,5 @@
 import React from "react";
+// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Header.css";
 import logo from "./images/logo.png";
 import SettingsIcon from "@material-ui/icons/Settings";
@@ -12,7 +13,7 @@ function Header() {
           <SettingsIcon fontSize="" className="header__settingsIcon" />
         </div>
         <div className="header__item">
-          <img src={logo} alt="" />
+          <img src={logo} alt="logo" />
         </div>
         <div className="header__item">
           <PersonIcon fontSize="" className="header__personIcon" />

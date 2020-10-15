@@ -1,23 +1,33 @@
 import React, { useState } from "react";
 import "./MovieCard.css";
 
-function MovieCard({ image }) {
-  const [movies, setMovies] = useState([
-    {
-      id: 0,
-      title: "",
-      image: "",
-      description: "",
-      trailer: "",
-    },
-    {
-      id: 1,
-      title: "",
-      image: "",
-      description: "",
-      trailer: "",
-    },
-  ]);
+function MovieCard({
+  id,
+  image,
+  overview,
+  title,
+  genres,
+  releaseDate,
+  tags,
+  cast,
+}) {
+  console.log(genres);
+  // const [movies, setMovies] = useState([
+  //   {
+  //     id: 0,
+  //     title: "",
+  //     image: "",
+  //     description: "",
+  //     trailer: "",
+  //   },
+  //   {
+  //     id: 1,
+  //     title: "",
+  //     image: "",
+  //     description: "",
+  //     trailer: "",
+  //   },
+  // ]);
 
   return (
     <div className="movieCard">
@@ -26,7 +36,33 @@ function MovieCard({ image }) {
           <img src={image} alt="Movie Cover" />
         </div>
         <div className="movieCard__back">
-          <span>THIS IS THE BACK</span>
+          <div className="movieCard__backDescription">
+            <p>
+              <strong>Title: </strong>
+              {title}
+            </p>
+            <p>
+              <strong>Description: </strong>
+              {overview}
+            </p>
+            <p>
+              <strong>Genres: </strong>
+              {"THIS IS THE GENRE"}
+            </p>
+            <p>
+              <strong>Release Date: </strong>
+              {releaseDate}
+            </p>
+            <p>
+              <strong>Tags: </strong>
+              {tags}
+            </p>
+            <p>
+              <strong>Cast: </strong>
+              {cast}
+            </p>
+          </div>
+          <div className="movieCard__backRatings"></div>
         </div>
       </div>
     </div>
@@ -34,13 +70,3 @@ function MovieCard({ image }) {
 }
 
 export default MovieCard;
-
-/*
-
-  <div className="movieCard__cardContainer">
-    {movies.map((movie) => (
-      <TinderCard className="swipe" key={movie.id}></TinderCard>
-    ))}
-  </div>
-      
-*/

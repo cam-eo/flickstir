@@ -21,21 +21,48 @@ function Main() {
     async function fetchdata() {
       const request = await axios.get(`/movie/550?api_key=${API_KEY}`);
       setMovie(request.data);
+      console.log(request.data);
       return request;
     }
     fetchdata();
   }, []);
 
+  let flipCard = false;
+
+  const flipTheCard = (e) => {
+    e.preventDefault();
+
+    if (flipCard) {
+      document.querySelector(".movieCard__back").className =
+        "movieCard__back movieCard__back--flip";
+
+      document.querySelector(".movieCard__front").className =
+        "movieCard__front movieCard__front--flip";
+      flipCard = false;
+    } else {
+      document.querySelector(".movieCard__back").className = "movieCard__back";
+      document.querySelector(".movieCard__front").className =
+        "movieCard__front";
+      flipCard = true;
+    }
+  };
+
   return (
     <div className="main">
       <MovieCard
         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        overview={movie.overview}
+        title={movie.title}
+        genres={movie.genres}
+        releaseDate={movie.release_date}
+        tags={movie.tagline}
+        cast={movie.cast}
       />
       <div className="main__controls">
         <div className="main__controlsButton">
           <NoIcon className="main__controlsButtonIcon" />
         </div>
-        <div className="main__controlsButton">
+        <div className="main__controlsButton" onClick={flipTheCard}>
           <DescriptionIcon className="main__controlsButtonIcon" />
         </div>
         <div className="main__controlsButton">
@@ -53,42 +80,3 @@ function Main() {
 }
 
 export default Main;
-
-/*
-<div className="main__content">
-        <div className="main__movieInfo">
-          <div className="main__movieInfoButtons">
-            <div className="main__movieInfoButton" tabindex="1">
-              <DescriptionIcon className="main__movieInfoButtonIcon" />
-            </div>
-            <div className="main__movieInfoButton" tabindex="2">
-              <FaceIcon className="main__movieInfoButtonIcon" />
-            </div>
-            <div className="main__movieInfoButton" tabindex="3">
-              <RatingsIcon className="main__movieInfoButtonIcon" />
-            </div>
-          </div>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt="Movie Poster"
-          />
-        </div>
-        <div className="main__functions">
-          <div className="main__watchedIt">
-            <span>Watched it?</span>
-            <input type="checkbox" />
-          </div>
-          <div className="main__buttonRow">
-            <div className="main__functionButton">
-              <NoIcon fontSize="large" className="main__noIcon" />
-            </div>
-            <div className="main__functionButton">
-              <PlayIcon fontSize="large" className="main__noIcon" />
-            </div>
-            <div className="main__functionButton">
-              <YesIcon fontSize="large" className="main__noIcon" />
-            </div>
-          </div>
-        </div>
-      </div>
-*/
