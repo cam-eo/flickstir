@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MovieCard.css";
+import axios from "./axios";
+const API_KEY = "455e6aaca51f7fdd3d3560e3bdbe5cda";
 
 function MovieCard({
   id,
@@ -11,23 +13,19 @@ function MovieCard({
   tags,
   cast,
 }) {
-  console.log(genres);
-  // const [movies, setMovies] = useState([
-  //   {
-  //     id: 0,
-  //     title: "",
-  //     image: "",
-  //     description: "",
-  //     trailer: "",
-  //   },
-  //   {
-  //     id: 1,
-  //     title: "",
-  //     image: "",
-  //     description: "",
-  //     trailer: "",
-  //   },
-  // ]);
+  const [movieInfo, setMovieInfo] = useState([]);
+  useEffect(() => {
+    async function fetchdata() {
+      const movieInfoRequest = await axios.get(
+        `/movie/${id}?api_key=${API_KEY}`
+      );
+      setMovieInfo(movieInfoRequest.data);
+      console.log(movieInfoRequest.data);
+      return movieInfoRequest;
+    }
+    fetchdata();
+    //everytime the movie id changes
+  }, [id]);
 
   return (
     <div className="movieCard">
@@ -39,7 +37,7 @@ function MovieCard({
           <div className="movieCard__backDescription">
             <p>
               <strong>Title: </strong>
-              {title}
+              {title ? title : movieInfo.title}
             </p>
             <p>
               <strong>Description: </strong>
@@ -47,7 +45,7 @@ function MovieCard({
             </p>
             <p>
               <strong>Genres: </strong>
-              {"THIS IS THE GENRE"}
+              {genres}
             </p>
             <p>
               <strong>Release Date: </strong>
