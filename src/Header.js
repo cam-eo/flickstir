@@ -10,13 +10,13 @@ function Header() {
     <div className="header">
       <div className="header__content">
         <div className="header__item">
-          <SettingsIcon fontSize="" className="header__settingsIcon" />
+          <SettingsIcon fontSize="large" className="header__settingsIcon" />
         </div>
         <div className="header__item">
           <img src={logo} alt="logo" />
         </div>
         <div className="header__item">
-          <PersonIcon fontSize="" className="header__personIcon" />
+          <PersonIcon fontSize="large" className="header__personIcon" />
         </div>
       </div>
     </div>

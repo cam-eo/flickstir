@@ -77,3 +77,28 @@
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
+
+.movieCard__front--swipeRight{
+    animation: swiperight 1s;
+}
+
+@keyframes swiperight {
+    0%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+
+    30%{
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    60%{
+        transform: translateX(0px);
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

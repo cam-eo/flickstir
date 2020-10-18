@@ -21,12 +21,14 @@ function Main() {
     async function fetchdata() {
       // const request = await axios.get(`/movie/550?api_key=${API_KEY}`);
       // const requestList = await axios.get(`/list/2?api_key=${API_KEY}`);
-      const getList = await axios.get(requests.fetchTrending);
+
+      //Note to cam: rather than passing the id and fetching data rather get everything loaded in here, that way we can also control the load
+      const getList = await axios.get(requests.fetchTopRated);
       setMovies(getList.data.results);
       setCurrentMovie(1);
       setFlipCard(true);
       setMovie(getList.data.results[0]);
-      console.log(getList.data.results[0]);
+      // console.log(getList.data.results[0]);  
 
       return getList;
     }
@@ -54,9 +56,15 @@ function Main() {
   const yes = (e) => {
     e.preventDefault();
 
+    // document.querySelector(".movieCard__front").className =
+    //     "movieCard__front";
+    
+    //Note to cam: This only seems to work once
+    document.querySelector(".movieCard__front").className =
+        "movieCard__front movieCard__front--swipeRight";
+
     if (currentMovie < movies.length) {
       setCurrentMovie(currentMovie + 1);
-      console.log("THIS IS THE MOVIE", currentMovie, movies[currentMovie]);
       setMovie(movies[currentMovie]);
     }
   };
@@ -73,6 +81,7 @@ function Main() {
   return (
     <div className="main">
       <MovieCard
+        id={movie.id}
         image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         overview={movie.overview}
         title={movie.title ? movie.title : movie.name}
@@ -80,7 +89,6 @@ function Main() {
         releaseDate={movie.release_date}
         tags={movie.tagline}
         cast={movie.credits}
-        id={movie.id}
       />
       <div className="main__controls">
         <div className="main__controlsButton">
