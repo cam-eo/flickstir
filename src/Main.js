@@ -4,9 +4,9 @@ import axios from "./axios";
 import requests from "./requests";
 import YesIcon from "@material-ui/icons/Check";
 import NoIcon from "@material-ui/icons/Close";
-import PlayIcon from "@material-ui/icons/PlayArrow";
-import DescriptionIcon from "@material-ui/icons/Description";
-import RatingsIcon from "@material-ui/icons/Grade";
+import PlayIcon from "@material-ui/icons/PlayArrowOutlined";
+import DescriptionIcon from "@material-ui/icons/DescriptionOutlined";
+import WatchedIt from "@material-ui/icons/PlaylistAddCheckOutlined";
 import MovieCard from "./MovieCard";
 const API_KEY = "455e6aaca51f7fdd3d3560e3bdbe5cda";
 
@@ -15,6 +15,7 @@ function Main() {
   const [movie, setMovie] = useState([]);
   const [currentMovie, setCurrentMovie] = useState([]);
   const [flipCard, setFlipCard] = useState([]);
+  const [watchedMovie, setWatchedMovie] = useState([]);
 
   //everytime this component loads then run this
   useEffect(() => {
@@ -22,13 +23,13 @@ function Main() {
       // const request = await axios.get(`/movie/550?api_key=${API_KEY}`);
       // const requestList = await axios.get(`/list/2?api_key=${API_KEY}`);
 
-      //Note to cam: rather than passing the id and fetching data rather get everything loaded in here, that way we can also control the load
+      //Note to cam: rather than passing the id and fetching data rather get everything loaded in here, that way we can also control the load of a new list
       const getList = await axios.get(requests.fetchTopRated);
       setMovies(getList.data.results);
       setCurrentMovie(1);
       setFlipCard(true);
-      setMovie(getList.data.results[0]);
-      // console.log(getList.data.results[0]);  
+      setWatchedMovie(false);
+      setMovie(getList.data.results[0]); 
 
       return getList;
     }
@@ -55,26 +56,56 @@ function Main() {
 
   const yes = (e) => {
     e.preventDefault();
-
-    // document.querySelector(".movieCard__front").className =
-    //     "movieCard__front";
-    
-    //Note to cam: This only seems to work once
-    document.querySelector(".movieCard__front").className =
-        "movieCard__front movieCard__front--swipeRight";
+    console.log("yes")
 
     if (currentMovie < movies.length) {
       setCurrentMovie(currentMovie + 1);
       setMovie(movies[currentMovie]);
     }
+
+    document.querySelector(".movieCard__frontWatchedTag").className =
+        "movieCard__frontWatchedTag";
+
+    document.querySelector(".movieCard__frontPoster").className =
+    "movieCard__frontPoster";
+    setWatchedMovie(false)
   };
 
   const no = (e) => {
     e.preventDefault();
+    console.log("no")
 
     if (currentMovie < movies.length) {
       setCurrentMovie(currentMovie + 1);
       setMovie(movies[currentMovie]);
+    }
+
+    document.querySelector(".movieCard__frontWatchedTag").className =
+        "movieCard__frontWatchedTag";
+
+    document.querySelector(".movieCard__frontPoster").className =
+    "movieCard__frontPoster";
+    setWatchedMovie(false)
+  };
+
+  const watched = (e) => {
+    e.preventDefault();
+    console.log("watched")
+
+    if(!watchedMovie){
+      document.querySelector(".movieCard__frontWatchedTag").className =
+        "movieCard__frontWatchedTag movieCard__frontWatchedTag--active";
+
+        document.querySelector(".movieCard__frontPoster").className =
+        "movieCard__frontPoster movieCard__frontPoster--watched";
+        setWatchedMovie(true)
+    }else{
+      document.querySelector(".movieCard__frontWatchedTag").className =
+        "movieCard__frontWatchedTag";
+
+        document.querySelector(".movieCard__frontPoster").className =
+        "movieCard__frontPoster";
+        setWatchedMovie(false)
     }
   };
 
@@ -101,7 +132,7 @@ function Main() {
           <PlayIcon className="main__controlsButtonIcon" />
         </div>
         <div className="main__controlsButton">
-          <RatingsIcon className="main__controlsButtonIcon" />
+          <WatchedIt className="main__controlsButtonIcon" onClick={watched}/>
         </div>
         <div className="main__controlsButton">
           <YesIcon className="main__controlsButtonIcon" onClick={yes} />

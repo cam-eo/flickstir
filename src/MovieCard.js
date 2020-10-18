@@ -13,31 +13,31 @@ function MovieCard({
   tags,
   cast,
 }) {
-  // const [movieInfo, setMovieInfo] = useState([]);
-  // useEffect(() => {
-  //   async function fetchdata() {
-  //     const movieInfoRequest = await axios.get(
-  //       `/movie/${id}?api_key=${API_KEY}`
-  //     );
-  //     setMovieInfo(movieInfoRequest.data);
-  //     console.log(movieInfoRequest.data);
-  //     return movieInfoRequest;
-  //   }
-  //   fetchdata();
-  //   //everytime the movie id changes
-  // }, [id]);
+  const [movieInfo, setMovieInfo] = useState([]);
+  useEffect(() => {
+    async function fetchdata() {
+      const movieInfoRequest = await axios.get(
+        `/movie/${id}?api_key=${API_KEY}`
+      );
+      setMovieInfo(movieInfoRequest.data);
+      console.log(movieInfoRequest.data);
+      return movieInfoRequest;
+    }
+    fetchdata();
+    //everytime the movie id changes
+  }, [id]);
 
   return (
     <div className="movieCard">
       <div className="movieCard__container">
         <div className="movieCard__front">
-          <img src={image} alt="Movie Cover" />
+          <img className='movieCard__frontPoster' src={image} alt="Movie Cover" />
+          <span className='movieCard__frontWatchedTag'>WATCHED</span>
         </div>
         <div className="movieCard__back">
           <div className="movieCard__backDescription">
             <p>
               <strong>Title: </strong>
-              {/* {movieInfo.title} */}
               {title}
             </p>
             <p>
