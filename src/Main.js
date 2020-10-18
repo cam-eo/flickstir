@@ -14,8 +14,7 @@ function Main() {
   const [movies, setMovies] = useState([]);
   const [movie, setMovie] = useState([]);
   const [currentMovie, setCurrentMovie] = useState([]);
-  let flipCard = false;
-  let numberOfMovies;
+  const [flipCard, setFlipCard] = useState([]);
 
   //everytime this component loads then run this
   useEffect(() => {
@@ -25,6 +24,7 @@ function Main() {
       const getList = await axios.get(requests.fetchTrending);
       setMovies(getList.data.results);
       setCurrentMovie(1);
+      setFlipCard(true);
       setMovie(getList.data.results[0]);
       console.log(getList.data.results[0]);
 
@@ -42,12 +42,12 @@ function Main() {
 
       document.querySelector(".movieCard__front").className =
         "movieCard__front movieCard__front--flip";
-      flipCard = false;
+      setFlipCard(false)
     } else {
       document.querySelector(".movieCard__back").className = "movieCard__back";
       document.querySelector(".movieCard__front").className =
         "movieCard__front";
-      flipCard = true;
+      setFlipCard(true);
     }
   };
 
