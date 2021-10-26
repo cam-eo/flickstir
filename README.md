@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my app tinder style app for movies
 
 ## Available Scripts
 
