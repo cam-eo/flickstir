@@ -8,7 +8,7 @@ import PlayIcon from "@material-ui/icons/PlayArrowOutlined";
 import DescriptionIcon from "@material-ui/icons/DescriptionOutlined";
 import WatchedIt from "@material-ui/icons/PlaylistAddCheckOutlined";
 import MovieCard from "./MovieCard";
-const API_KEY = "455e6aaca51f7fdd3d3560e3bdbe5cda";
+// const API_KEY = "455e6aaca51f7fdd3d3560e3bdbe5cda";
 
 function Main() {
   const [movies, setMovies] = useState([]);
